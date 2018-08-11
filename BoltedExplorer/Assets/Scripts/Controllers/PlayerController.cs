@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     #region Private Members
 
     private Transform groundCheck;
+    private GameObject spawnPoint;
     private bool grounded = false;
     // private Animator anim;
     private new Rigidbody2D rigidbody;
@@ -40,9 +41,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        spawnPoint = GameObject.FindGameObjectWithTag("spawn");
         groundCheck = transform.Find("groundCheck");
         //      anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+
+        var pos = spawnPoint.transform.position;
+        var col = spawnPoint.GetComponent<BoxCollider2D>().offset;
+        gameObject.transform.position = new Vector2(pos.x + col.x, pos.y);
     }
 
     #endregion
@@ -50,6 +56,10 @@ public class PlayerController : MonoBehaviour
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Start Function
+    
+    void Start()
+    {
+    }
 
     #endregion
 
@@ -79,15 +89,20 @@ public class PlayerController : MonoBehaviour
 
         //   anim.SetFloat("Speed", Mathf.Abs(h));
 
-        if( h * rigidbody.velocity.x < maxSpeed )
-        {
-            rigidbody.AddForce(Vector2.right * h * moveForce);
-        }
+        rigidbody.velocity = new Vector2(h * maxSpeed, rigidbody.velocity.y);
 
-        if( Mathf.Abs(rigidbody.velocity.x) > maxSpeed )
-        {
-            rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
-        }
+
+        /* Sliding code ---------------------*/
+
+        //if( h * rigidbody.velocity.x < maxSpeed )
+        //{
+        //    rigidbody.AddForce(Vector2.right * h * moveForce);
+        //}
+
+        //if( Mathf.Abs(rigidbody.velocity.x) > maxSpeed )
+        //{
+        //    rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
+        //}
 
         if( h > 0 && !facingRight )
         {
