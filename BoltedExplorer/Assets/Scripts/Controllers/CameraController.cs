@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
     #region Public Members
 
     public GameObject player;       //Public variable to store a reference to the player game object
+    public float yOffset = 0f;
 
     #endregion
 
@@ -32,8 +33,9 @@ public class CameraController : MonoBehaviour {
 
     void Start()
     {
+        var additionalOffset = new Vector3(player.transform.position.x, player.transform.position.y - yOffset);
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
-        offset = transform.position - player.transform.position;
+        offset = transform.position - additionalOffset;
     }
 
     #endregion

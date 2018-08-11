@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 415894e06d316d44a9f8e44b28085edf
+guid: 88197b0ec5163544d94ac9f626466905
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Placeholder_0
-    21300002: Placeholder_1
-    21300004: Placeholder_2
-    21300006: Placeholder_3
-    21300008: Placeholder_4
+    21300000: TombRampCollisionSpriteSheet_0
+    21300002: TombRampCollisionSpriteSheet_1
+    21300004: TombRampCollisionSpriteSheet_2
+    21300006: TombRampCollisionSpriteSheet_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -89,101 +88,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Placeholder_0
+      name: TombRampCollisionSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c8e8193967c8654d8d99832091b0d26
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TombRampCollisionSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b40d47c4aca42489f3426ea564cb5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TombRampCollisionSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -4, y: 16}
+        - {x: -16, y: 10}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
-      spriteID: 1162737547d26b94b8ab46ad3ec5cefb
+      spriteID: 990601b740c3b294db5ebac92298b312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Placeholder_1
+      name: TombRampCollisionSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 5, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 10}
       tessellationDetail: 0
       bones: []
-      spriteID: 276b81cb2b82a0b428439241e38a0222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Placeholder_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c3d80a389ecb4b40983ef9a4bf1a71e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Placeholder_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1834d1c9a3a83434b915ebeb4fd80a51
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Placeholder_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0cd738bd52162942b410218926f6364
+      spriteID: ed26ca25a32750149a5a9ec2e11c7462
       vertices: []
       indices: 
       edges: []
@@ -191,12 +180,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a0a3190dda92f494e9fe07d8792f2ad7
+    spriteID: 4c1e4dc45b98cb34eae26afa8eaec338
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 1
+  spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

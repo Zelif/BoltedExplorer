@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
-    public float originalJumpForce;
+    public GameObject activeItem;
 
     #endregion
 
@@ -31,10 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private Transform groundCheck;
     private GameObject spawnPoint;
+    private float originalJumpForce;
     private bool grounded = false;
+    private bool inWater = false;
     // private Animator anim;
     private new Rigidbody2D rigidbody;
-    private bool inWater = false;
 
     #endregion
 
