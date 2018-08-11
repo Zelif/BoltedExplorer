@@ -1,27 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Public Members
+
     [HideInInspector]
     public bool facingRight = true;
     [HideInInspector]
     public bool jump = false;
+    [HideInInspector]
+    public float health = 100f;
+    [HideInInspector]
+    public float anxiety = 100f;
+
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
-    // public AudioClip[] taunts;
-    public float tauntProbability = 50f;
-    public float tauntDelay = 1f;
 
-    private int tauntIndex;
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Private Members
+
     private Transform groundCheck;
     private bool grounded = false;
     // private Animator anim;
     private new Rigidbody2D rigidbody;
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Awake Function
 
     void Awake()
     {
@@ -30,7 +45,18 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Start Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Update Function
+
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -40,6 +66,12 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
     }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Fixed Update Function
 
     void FixedUpdate()
     {
@@ -79,6 +111,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Functions
+
     void Flip()
     {
         facingRight = !facingRight;
@@ -87,4 +125,8 @@ public class PlayerController : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 }
