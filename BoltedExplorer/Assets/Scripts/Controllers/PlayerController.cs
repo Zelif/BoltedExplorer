@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
+    public float originalJumpForce;
 
     #endregion
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private bool grounded = false;
     // private Animator anim;
     private new Rigidbody2D rigidbody;
+    private bool inWater = false;
 
     #endregion
 
@@ -48,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
         var pos = spawnPoint.transform.position;
         var col = spawnPoint.GetComponent<BoxCollider2D>().offset;
-        gameObject.transform.position = new Vector2(pos.x + col.x, pos.y);
+        gameObject.transform.position = new Vector2(pos.x + col.x, pos.y + col.y);
+
+        originalJumpForce = jumpForce;
     }
 
     #endregion
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if( Input.GetButtonDown("Jump") && grounded )
+        if( Input.GetButtonDown("Jump") && ( grounded || inWater ) )
         {
             jump = true;
         }
@@ -123,6 +128,38 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(new Vector2(0f, jumpForce));
 
             jump = false;
+        }
+    }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region OnTrigger Functions
+
+    void OnTriggerEnter2D( Collider2D col )
+    {
+        if( col.gameObject.CompareTag("goal") )
+        {
+            SceneManager.LoadScene("Scenes/MainMenu");
+        }
+    }
+
+    void OnTriggerStay2D( Collider2D col )
+    {
+        if( col.gameObject.CompareTag("water"))
+        {
+            inWater = true;
+            jumpForce = 150f;
+        }
+    }
+
+    void OnTriggerExit2D( Collider2D col)
+    {
+        if( col.gameObject.CompareTag("water") )
+        {
+            inWater = false;
+            jumpForce = originalJumpForce;
         }
     }
 

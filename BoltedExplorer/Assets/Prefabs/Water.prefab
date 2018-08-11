@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4042222762578364}
   - component: {fileID: 212882445117570698}
   - component: {fileID: 61749833714764300}
+  - component: {fileID: 114574360441642208}
   m_Layer: 4
   m_Name: Water
   m_TagString: water
@@ -66,6 +67,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114574360441642208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1240520596485794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a633343bac933e4d9b93ed8e8bb3e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLevel: 4
+  floatHeight: 2
+  bounceDamp: 0.05
+  buoyancyCentreOffset: {x: 0, y: 0.7, z: 0}
 --- !u!212 &212882445117570698
 SpriteRenderer:
   m_ObjectHideFlags: 1
