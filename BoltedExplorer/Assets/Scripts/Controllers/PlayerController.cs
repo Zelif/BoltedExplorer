@@ -11,22 +11,22 @@ public class PlayerController : MonoBehaviour
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
-   // public AudioClip[] jumpClips;
+    // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
-   // public AudioClip[] taunts;
+    // public AudioClip[] taunts;
     public float tauntProbability = 50f;
     public float tauntDelay = 1f;
 
     private int tauntIndex;
     private Transform groundCheck;
     private bool grounded = false;
-   // private Animator anim;
+    // private Animator anim;
     private new Rigidbody2D rigidbody;
 
     void Awake()
     {
         groundCheck = transform.Find("groundCheck");
-  //      anim = GetComponent<Animator>();
+        //      anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-     //   anim.SetFloat("Speed", Mathf.Abs(h));
+        //   anim.SetFloat("Speed", Mathf.Abs(h));
 
         if( h * rigidbody.velocity.x < maxSpeed )
         {
@@ -68,10 +68,10 @@ public class PlayerController : MonoBehaviour
 
         if( jump )
         {
-      //      anim.SetTrigger("Jump");
+            //      anim.SetTrigger("Jump");
 
-      //      int i = Random.Range(0, jumpClips.Length);
-      //      AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+            //      int i = Random.Range(0, jumpClips.Length);
+            //      AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
             rigidbody.AddForce(new Vector2(0f, jumpForce));
 
