@@ -11,6 +11,7 @@ TagManager:
   - goal
   - detail
   - background
+  - trigger
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Goal
   - Detail
   - Background
-  - 
+  - Triggers
   - 
   - 
   - 
@@ -54,6 +55,12 @@ TagManager:
   - name: Ground
     uniqueID: 2409205379
     locked: 0
+  - name: Triggers
+    uniqueID: 4280159121
+    locked: 0
   - name: Detail
     uniqueID: 1909687655
+    locked: 0
+  - name: UI
+    uniqueID: 4150332855
     locked: 0

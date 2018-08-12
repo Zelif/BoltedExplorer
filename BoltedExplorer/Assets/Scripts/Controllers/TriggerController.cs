@@ -1,0 +1,135 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TriggerController : MonoBehaviour {
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Public Members
+
+    public TriggerType type = TriggerType.Unassigned;
+
+    public GameObject prefab;
+    public GameObject target;
+    public GameObject spawnLocation;
+
+    public bool limited = false;
+    public int count = 1;
+
+    public string dialogue = "";
+    public float dialogueDisplayTime = 5f;
+
+    public float startDelayTime = 1f;
+    public float endDelayTime = 1f;
+    public float speed = 3f;
+
+    private bool onEnter = false;
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Private Members
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Awake Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Start Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Update Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Late Update Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Fixed Update Function
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region OnTrigger Functions
+
+    void OnTriggerEnter2D( Collider2D col )
+    {
+        if( col.gameObject.CompareTag("Player") )
+        {
+            if( !onEnter )
+            {
+                onEnter = true;
+
+                switch( type )
+                {
+                    case TriggerType.Dialogue:
+                        InitialiseDialogue();
+                        break;
+                    case TriggerType.Wraith:
+                        InitialiseObject();
+                        break;
+                    case TriggerType.Trap:
+                        InitialiseTrap();
+                        break;
+                };
+            }
+        }
+    }
+
+    void OnTriggerExit2D( Collider2D col )
+    {
+        if( col.gameObject.CompareTag("Player") )
+        {
+            onEnter = false;
+        }
+    }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+    #region Functions
+
+    void InitialiseDialogue()
+    {
+        var dialoguePrefab = Instantiate( prefab, target.transform.position, Quaternion.identity) as GameObject;
+        var component = dialoguePrefab.GetComponent<DialogueController>();
+        component.Initalise( target, dialogue, dialogueDisplayTime );
+        component.GetComponent<DialogueController>().Run();
+        Destroy(this);
+    }
+
+    void InitialiseObject()
+    {
+        var wraithPrefab = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
+        var component = wraithPrefab.GetComponent<WraithController>();
+        component.Initialise( target );
+        component.Run();
+        Destroy(this);
+    }
+
+    void InitialiseTrap()
+    {
+        var trapPrefab = Instantiate(prefab, target.transform.position, Quaternion.identity) as GameObject;
+    }
+
+    #endregion
+
+    /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+}

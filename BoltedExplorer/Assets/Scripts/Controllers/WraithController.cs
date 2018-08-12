@@ -21,7 +21,6 @@ public class WraithController : MonoBehaviour {
     // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
     public GameObject activeItem;
-    public GameObject target;
 
 
     #endregion
@@ -30,10 +29,9 @@ public class WraithController : MonoBehaviour {
 
     #region Private Members
 
-    private bool grounded = false;
-    private bool inWater = false;
     private Animator anim;
-    private new Rigidbody2D rigidbody;
+    private GameObject target;
+    private bool execute = false;
 
     #endregion
 
@@ -44,9 +42,6 @@ public class WraithController : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
-
-        Debug.Log(anim);
     }
 
     #endregion
@@ -55,19 +50,11 @@ public class WraithController : MonoBehaviour {
 
     #region Start Function
 
-    void Start()
-    {
-    }
-
     #endregion
 
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Update Function
-
-    void Update()
-    {
-    }
 
     #endregion
 
@@ -77,23 +64,26 @@ public class WraithController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if( transform.position.x - target.transform.position.x < -xOffset || transform.position.x - target.transform.position.x > xOffset )
+        if( execute )
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, maxSpeed * Time.deltaTime);
-            anim.Play("Idle");
-        }
-        else
-        {
-            anim.Play("Attack");
-        }
+            if( transform.position.x - target.transform.position.x < -xOffset || transform.position.x - target.transform.position.x > xOffset )
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, maxSpeed * Time.deltaTime);
+                anim.Play("Idle");
+            }
+            else
+            {
+                anim.Play("Attack");
+            }
 
-        if( transform.position.x - target.transform.position.x < 0 && !facingRight )
-        {
-            Flip();
-        }
-        else if( transform.position.x - target.transform.position.x > 0 && facingRight )
-        {
-            Flip();
+            if( transform.position.x - target.transform.position.x < 0 && !facingRight )
+            {
+                Flip();
+            }
+            else if( transform.position.x - target.transform.position.x > 0 && facingRight )
+            {
+                Flip();
+            }
         }
     }
 
@@ -102,22 +92,6 @@ public class WraithController : MonoBehaviour {
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region OnTrigger Functions
-
-    void OnTriggerStay2D( Collider2D col )
-    {
-        if( col.gameObject.CompareTag("water") )
-        {
-            inWater = true;
-        }
-    }
-
-    void OnTriggerExit2D( Collider2D col )
-    {
-        if( col.gameObject.CompareTag("water") )
-        {
-            inWater = false;
-        }
-    }
 
     #endregion
 
@@ -132,6 +106,21 @@ public class WraithController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void Initialise( GameObject newTarget )
+    {
+        target = newTarget;
+        if( anim == null )
+        {
+            Debug.Log("Could not find animator");
+            anim = GetComponent<Animator>();
+        }
+    }
+
+    public void Run()
+    {
+        execute = true;
     }
 
     #endregion
