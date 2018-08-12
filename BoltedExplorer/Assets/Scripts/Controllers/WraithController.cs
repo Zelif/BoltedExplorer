@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class WraithController : MonoBehaviour {
+
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Public Members
@@ -13,15 +14,15 @@ public class PlayerController : MonoBehaviour
     public bool jump = false;
     [HideInInspector]
     public float health = 100f;
-    [HideInInspector]
-    public float anxiety = 100f;
 
-
+    public float xOffset = 2.5f;
     public float moveForce = 365f;
-    public float maxSpeed = 5f;
+    public float maxSpeed = 10f;
     // public AudioClip[] jumpClips;
     public float jumpForce = 300f;
     public GameObject activeItem;
+    public GameObject target;
+
 
     #endregion
 
@@ -29,12 +30,9 @@ public class PlayerController : MonoBehaviour
 
     #region Private Members
 
-    private Transform groundCheck;
-    private GameObject spawnPoint;
-    private float originalJumpForce;
     private bool grounded = false;
     private bool inWater = false;
-    // private Animator anim;
+    private Animator anim;
     private new Rigidbody2D rigidbody;
 
     #endregion
@@ -45,19 +43,10 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        spawnPoint = GameObject.FindGameObjectWithTag("spawn");
-        groundCheck = transform.Find("groundCheck");
-        //      anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
 
-        if( spawnPoint != null)
-        {
-            var pos = spawnPoint.transform.position == null ? new Vector3(0, 0, 0) : spawnPoint.transform.position;
-            var col = spawnPoint.GetComponent<BoxCollider2D>().offset;
-            gameObject.transform.position = new Vector2(pos.x + col.x, pos.y + col.y);
-        }
-
-        originalJumpForce = jumpForce;
+        Debug.Log(anim);
     }
 
     #endregion
@@ -65,7 +54,7 @@ public class PlayerController : MonoBehaviour
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Start Function
-    
+
     void Start()
     {
     }
@@ -78,12 +67,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
-        if( Input.GetButtonDown("Jump") && ( grounded || inWater ) )
-        {
-            jump = true;
-        }
     }
 
     #endregion
@@ -94,44 +77,23 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
+        if( transform.position.x - target.transform.position.x < -xOffset || transform.position.x - target.transform.position.x > xOffset )
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, maxSpeed * Time.deltaTime);
+            anim.Play("Idle");
+        }
+        else
+        {
+            anim.Play("Attack");
+        }
 
-        //   anim.SetFloat("Speed", Mathf.Abs(h));
-
-        rigidbody.velocity = new Vector2(h * maxSpeed, rigidbody.velocity.y);
-
-
-        /* Sliding code ---------------------*/
-
-        //if( h * rigidbody.velocity.x < maxSpeed )
-        //{
-        //    rigidbody.AddForce(Vector2.right * h * moveForce);
-        //}
-
-        //if( Mathf.Abs(rigidbody.velocity.x) > maxSpeed )
-        //{
-        //    rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
-        //}
-
-        if( h > 0 && !facingRight )
+        if( transform.position.x - target.transform.position.x < 0 && !facingRight )
         {
             Flip();
         }
-        else if( h < 0 && facingRight )
+        else if( transform.position.x - target.transform.position.x > 0 && facingRight )
         {
             Flip();
-        }
-
-        if( jump )
-        {
-            //      anim.SetTrigger("Jump");
-
-            //      int i = Random.Range(0, jumpClips.Length);
-            //      AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
-
-            rigidbody.AddForce(new Vector2(0f, jumpForce));
-
-            jump = false;
         }
     }
 
@@ -141,29 +103,19 @@ public class PlayerController : MonoBehaviour
 
     #region OnTrigger Functions
 
-    void OnTriggerEnter2D( Collider2D col )
-    {
-        if( col.gameObject.CompareTag("goal") )
-        {
-            SceneManager.LoadScene("Scenes/MainMenu");
-        }
-    }
-
     void OnTriggerStay2D( Collider2D col )
     {
-        if( col.gameObject.CompareTag("water"))
+        if( col.gameObject.CompareTag("water") )
         {
             inWater = true;
-            jumpForce = 150f;
         }
     }
 
-    void OnTriggerExit2D( Collider2D col)
+    void OnTriggerExit2D( Collider2D col )
     {
         if( col.gameObject.CompareTag("water") )
         {
             inWater = false;
-            jumpForce = originalJumpForce;
         }
     }
 
