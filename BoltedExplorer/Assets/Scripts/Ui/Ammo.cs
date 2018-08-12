@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour {
     public List<GameObject> BulletList;
+    [SerializeField]
     private int ammocount;
     public int AmmoCount
     {
@@ -14,9 +15,9 @@ public class Ammo : MonoBehaviour {
         set
         {
             ammocount = value;
-            for (var i = ammocount; i < 8; i++)
+            for (var i = 0; i < 8; i++)
             {
-                BulletList[i].SetActive(false);
+                BulletList[i].SetActive(i < ammocount);
             }
         }
     }
