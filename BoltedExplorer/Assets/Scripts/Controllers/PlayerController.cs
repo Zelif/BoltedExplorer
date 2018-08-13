@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float armOffset = 0f;
     private float ReloadTimer = 2;
     private bool reloading = false;
+    public GameObject Bullet;
 
     public static event HealthDelegate HealthEvent;
     public static event AnxietyDelegate AnxietyEvent;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
         set
         {
-            health = value;
+            health = Mathf.Clamp(value, 0, 100);
             if(HealthEvent != null)
             {
                 HealthEvent(health);
@@ -150,7 +151,7 @@ public class PlayerController : MonoBehaviour
         }
         set
         {
-            flashLightTime = value;
+            flashLightTime = Mathf.Clamp(value, 0, 360);
             if (FlashLightTimeEvent != null)
             {
                 FlashLightTimeEvent(flashLightTime);
@@ -384,7 +385,7 @@ public class PlayerController : MonoBehaviour
             // Make event to trigger empty sound/maybe visual
             return;
         }
-        // 
+        Instantiate(Bullet, rightArm.transform.position,rightArm.transform.rotation);
         LoadedAmmo--;
     }
 

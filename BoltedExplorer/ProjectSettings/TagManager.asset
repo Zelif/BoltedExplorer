@@ -13,6 +13,8 @@ TagManager:
   - background
   - trigger
   - wraith
+  - projectile
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -31,7 +33,7 @@ TagManager:
   - Triggers
   - Player
   - Enemy
-  - 
+  - Bullets
   - 
   - 
   - 
