@@ -55,6 +55,11 @@ public class HealthBoard : MonoBehaviour {
         if(health <= 0)
         {
             audio.Play();
+            var spawns = GameObject.FindGameObjectsWithTag("Enemies");
+            foreach(var spawn in spawns )
+            {
+                Destroy(spawn);
+            }
             LeftChainToBreak.simulated = false;
             RightChainToBreak.simulated = false;
         }

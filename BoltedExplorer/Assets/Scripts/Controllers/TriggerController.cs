@@ -150,6 +150,7 @@ public class TriggerController : MonoBehaviour {
 
     void InitialiseWraith()
     {
+        if (spawnLocation == null) return;
         var wraithPrefab = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
         var component = wraithPrefab.GetComponent<WraithController>();
         component.Initialise( target );

@@ -27,7 +27,7 @@ public class WraithController : MonoBehaviour {
             if(health <= 0 && DeathEvent != null)
             {
                 DeathEvent(transform.position);
-                var dedWraith = Instantiate(DeathPrefab, transform.position, transform.rotation);
+                var dedWraith = Instantiate(DeathPrefab, transform.position - new Vector3(0,0,0.5f), transform.rotation);
                 Destroy(gameObject);
                 Destroy(dedWraith, 1.5f);
             }

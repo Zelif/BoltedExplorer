@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     private bool grounded = false;
     private bool inWater = false;
     private Animator anim;
-    private new Rigidbody2D rigidbody;
+    private Rigidbody2D rigidbody;
     private AudioSource audio;
 
     #endregion
@@ -239,40 +239,45 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
-        if( Input.GetButtonDown("Jump") && ( grounded || inWater ) )
+        if (health > 0)
         {
-            jump = true;
+
+
+            grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+
+            if (Input.GetButtonDown("Jump") && (grounded || inWater))
+            {
+                jump = true;
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Reload();
+            }
+
+            if (Input.GetButtonDown("FlashLight"))
+            {
+                ToggleFlashLight();
+            }
+
+            if (FlashLightTime <= 0)
+            {
+                FlashLight = false;
+            }
+
+            if (FlashLight)
+                FlashLightTime -= FlashlightDrainSpeed * Time.deltaTime;
+
+            Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rightArm.transform.position;
+            difference.Normalize();
+            float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            rightArm.transform.rotation = Quaternion.Euler(0f, 0f, rotation_z + armOffset);
         }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Reload();
-        }
-
-        if (Input.GetButtonDown("FlashLight"))
-        {
-            ToggleFlashLight();
-        }
-
-        if(FlashLightTime <= 0)
-        {
-            FlashLight = false;
-        }
-
-        if(FlashLight)
-            FlashLightTime -= FlashlightDrainSpeed * Time.deltaTime;
-
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rightArm.transform.position;
-        difference.Normalize();
-        float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        rightArm.transform.rotation = Quaternion.Euler(0f, 0f, rotation_z + armOffset);
     }
 
     #endregion
@@ -283,51 +288,54 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-
-        if( Input.GetAxis("Horizontal") != 0 )
+        if (health > 0)
         {
-            anim.Play("Walking");
-        }
-        else
-        {
-            anim.Play("Idle");
-        }
+            float h = Input.GetAxis("Horizontal");
 
-        rigidbody.velocity = new Vector2(h * maxSpeed, rigidbody.velocity.y);
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                anim.Play("Walking");
+            }
+            else
+            {
+                anim.Play("Idle");
+            }
+
+            rigidbody.velocity = new Vector2(h * maxSpeed, rigidbody.velocity.y);
 
 
-        /* Sliding code ---------------------*/
+            /* Sliding code ---------------------*/
 
-        //if( h * rigidbody.velocity.x < maxSpeed )
-        //{
-        //    rigidbody.AddForce(Vector2.right * h * moveForce);
-        //}
+            //if( h * rigidbody.velocity.x < maxSpeed )
+            //{
+            //    rigidbody.AddForce(Vector2.right * h * moveForce);
+            //}
 
-        //if( Mathf.Abs(rigidbody.velocity.x) > maxSpeed )
-        //{
-        //    rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
-        //}
+            //if( Mathf.Abs(rigidbody.velocity.x) > maxSpeed )
+            //{
+            //    rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
+            //}
 
-        if( h > 0 && !facingRight )
-        {
-            Flip();
-        }
-        else if( h < 0 && facingRight )
-        {
-            Flip();
-        }
+            if (h > 0 && !facingRight)
+            {
+                Flip();
+            }
+            else if (h < 0 && facingRight)
+            {
+                Flip();
+            }
 
-        if( jump )
-        {
-            //      anim.SetTrigger("Jump");
+            if (jump)
+            {
+                //      anim.SetTrigger("Jump");
 
-            //      int i = Random.Range(0, jumpClips.Length);
-            //      AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+                //      int i = Random.Range(0, jumpClips.Length);
+                //      AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
-            rigidbody.AddForce(new Vector2(0f, jumpForce));
+                rigidbody.AddForce(new Vector2(0f, jumpForce));
 
-            jump = false;
+                jump = false;
+            }
         }
     }
 

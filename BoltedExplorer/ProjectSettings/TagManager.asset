@@ -15,6 +15,7 @@ TagManager:
   - wraith
   - projectile
   - UI
+  - Enemies
   layers:
   - Default
   - TransparentFX

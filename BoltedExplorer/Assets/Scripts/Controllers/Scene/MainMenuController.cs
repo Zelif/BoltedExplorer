@@ -46,9 +46,12 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Scenes/Level1");
+        SceneManager.LoadScene("Scenes/Intro");
     }
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Scenes/MainMenu");
+    }
     public void Options()
     {
         //SceneManager.LoadScene("Scenes/Options");
