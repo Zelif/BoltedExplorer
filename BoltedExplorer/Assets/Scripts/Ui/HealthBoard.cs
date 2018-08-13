@@ -10,7 +10,6 @@ public class HealthBoard : MonoBehaviour {
     public RectTransform HealthLiquid;
     public Rigidbody2D LeftChainToBreak;
     public Rigidbody2D RightChainToBreak;
-    public PlayerController PlayerObject;
 
     private float originHeight;
     private float originalWidth;
@@ -39,12 +38,11 @@ public class HealthBoard : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-        Health = PlayerObject.Health;
+    void Awake () {
         rectTransform = HealthLiquid;
         originalWidth = rectTransform.sizeDelta.x;
         originHeight = rectTransform.sizeDelta.y;
-        PlayerObject.HealthEvent += new PlayerController.HealthDelegate(HandleHealthUpdate);
+        PlayerController.HealthEvent += new PlayerController.HealthDelegate(HandleHealthUpdate);
     }
 	
 	// Update is called once per frame
@@ -57,5 +55,10 @@ public class HealthBoard : MonoBehaviour {
             LeftChainToBreak.simulated = false;
             RightChainToBreak.simulated = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerController.HealthEvent -= HandleHealthUpdate;
     }
 }

@@ -27,13 +27,25 @@ public class Torch : MonoBehaviour {
 
     public Image ImageFill;
 
+    void HandleFlashLightEvent(float time)
+    {
+        TorchLeft = time;
+    }
+
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+        PlayerController.FlashLightTimeEvent 
+            += new PlayerController.FlashLightTimeDelegate(HandleFlashLightEvent);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    private void OnDestroy()
+    {
+        PlayerController.FlashLightTimeEvent -= HandleFlashLightEvent;
+
+    }
 }

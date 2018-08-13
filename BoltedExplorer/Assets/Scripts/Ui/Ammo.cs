@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour {
     public List<GameObject> BulletList;
-    public PlayerController PlayerObject;
 
     [SerializeField]
     private int ammocount;
@@ -29,19 +28,24 @@ public class Ammo : MonoBehaviour {
         AmmoCount = ammocount;
     }
 
-    void HandleLoadedAmmoChange(int ammo)
+    void HandleAmmoChange(int ammo)
     {
         AmmoCount = ammo;
     }
 
     // Use this for initialization
-    void Start () {
-        PlayerObject.LoadedAmmoEvent += new PlayerController.LoadedAmmoDelegate(HandleLoadedAmmoChange);
-        AmmoCount = PlayerObject.LoadedAmmo;
+    void Awake () {
+        PlayerController.LoadedAmmoEvent 
+            += new PlayerController.LoadedAmmoDelegate(HandleAmmoChange);
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    private void OnDestroy()
+    {
+        PlayerController.LoadedAmmoEvent -= HandleAmmoChange;
+    }
 }

@@ -19,17 +19,26 @@ public class PlayerController : MonoBehaviour
     private int ammo = 14;
     [SerializeField]
     private int loadedAmmo = 8;
+    [SerializeField]
+    private bool flashLightEnabled = false;
+    [SerializeField]
+    private float flashLightTime = 360;
+    public float FlashlightDrainSpeed = 0.5f;
+    
 
-
-    public event HealthDelegate HealthEvent;
-    public event AnxietyDelegate AnxietyEvent;
-    public event AmmoDelegate AmmoEvent;
-    public event LoadedAmmoDelegate LoadedAmmoEvent;
+    public static event HealthDelegate HealthEvent;
+    public static event AnxietyDelegate AnxietyEvent;
+    public static event AmmoDelegate AmmoEvent;
+    public static event LoadedAmmoDelegate LoadedAmmoEvent;
+    public static event FlashLightDelegate FlashLightEvent;
+    public static event FlashLightTimeDelegate FlashLightTimeEvent;
 
     public delegate void HealthDelegate(float h);
     public delegate void AnxietyDelegate(float a);
     public delegate void AmmoDelegate(int a);
     public delegate void LoadedAmmoDelegate(int lda);
+    public delegate void FlashLightDelegate(bool flashLight);
+    public delegate void FlashLightTimeDelegate(float flashLight);
 
     public float Anxiety
     {
@@ -95,12 +104,46 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool FlashLight
+    {
+        get
+        {
+            return flashLightEnabled;
+        }
+        set
+        {
+            flashLightEnabled = value;
+            if(FlashLightEvent != null)
+            {
+                FlashLightEvent(flashLightEnabled);
+            }
+        }
+    }
+
+    public float FlashLightTime
+    {
+        get
+        {
+            return flashLightTime;
+        }
+        set
+        {
+            flashLightTime = value;
+            if (FlashLightTimeEvent != null)
+            {
+                FlashLightTimeEvent(flashLightTime);
+            }
+        }
+    }
+
     private void OnValidate()
     {
         LoadedAmmo = loadedAmmo;
         Health = health;
         Anxiety = anxiety;
         Ammo = ammo;
+        FlashLight = flashLightEnabled;
+        FlashLightTime = flashLightTime;
     }
 
 
@@ -155,6 +198,8 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        Health = 100;
+        LoadedAmmo = 8;
     }
 
     #endregion
@@ -171,6 +216,19 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
+
+        if (Input.GetButtonDown("FlashLight"))
+        {
+            ToggleFlashLight();
+        }
+
+        if(FlashLightTime <= 0)
+        {
+            flashLightEnabled = false;
+        }
+
+        if(flashLightEnabled)
+            FlashLightTime -= FlashlightDrainSpeed * Time.deltaTime;
     }
 
     #endregion
@@ -295,6 +353,16 @@ public class PlayerController : MonoBehaviour
         }
         ammoToReload = Mathf.Min(ammoToReload, Ammo);
         LoadedAmmo = loadedAmmo +  ammoToReload;
+    }
+
+    void ToggleFlashLight()
+    {
+        if(flashLightTime <= 0)
+        {
+            flashLightEnabled = false;
+            return;
+        }
+        FlashLight = !FlashLight;
     }
 
     #endregion
