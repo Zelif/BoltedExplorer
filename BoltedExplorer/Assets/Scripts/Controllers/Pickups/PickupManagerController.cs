@@ -9,7 +9,7 @@ public class PickupManagerController : MonoBehaviour {
     {
         if (Random.Range(0, 100) < DropRate)
         {
-            var randPickupNumber = Random.Range(0, PickupList.Count - 1);
+            var randPickupNumber = Random.Range(0, PickupList.Count);
             Instantiate(PickupList[randPickupNumber], pos, new Quaternion());
         }
     }

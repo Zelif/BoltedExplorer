@@ -27,6 +27,7 @@ public class WraithController : MonoBehaviour {
             if(health <= 0 && DeathEvent != null)
             {
                 DeathEvent(transform.position);
+                Destroy(gameObject);
             }
         }
     }

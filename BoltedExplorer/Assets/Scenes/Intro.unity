@@ -83333,6 +83333,7 @@ MonoBehaviour:
   flashLightTime: 360
   FlashlightDrainSpeed: 10
   armOffset: 90
+  Bullet: {fileID: 1851745950699192, guid: c99a53a5b2ad05842ae8beab6b7048a5, type: 2}
   moveForce: 365
   maxSpeed: 14
   jumpForce: 1500
@@ -83524,6 +83525,14 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 337079675}
+    - target: {fileID: 1087693708566762, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087693708566762, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
   m_IsPrefabAsset: 0
@@ -95903,7 +95912,6 @@ GameObject:
   - component: {fileID: 1406567555}
   - component: {fileID: 1406567558}
   - component: {fileID: 1406567556}
-  - component: {fileID: 1406567557}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -95930,17 +95938,6 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 114596763541878036, guid: dd179174953e66949a89173d2f7bb62a,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406567554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314204669a3d295408a3e0793b08b5cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1406567557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1406567554}
   m_Enabled: 1
