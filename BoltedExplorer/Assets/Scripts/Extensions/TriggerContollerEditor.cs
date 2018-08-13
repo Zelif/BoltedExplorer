@@ -54,6 +54,7 @@ public class TriggerContollerEditor : Editor
             case TriggerType.Wraith:
                 EditorGUILayout.PropertyField(prefab_Prop, new GUIContent("Prefab"));
                 EditorGUILayout.PropertyField(limited_Prop, new GUIContent("Limited"));
+                EditorGUILayout.PropertyField(startDelayTime_Prop, new GUIContent("Spawn Delay"));
                 EditorGUILayout.PropertyField(count_Prop, new GUIContent("Spawn Count"));
                 EditorGUILayout.PropertyField(spawnLocation_Prop, new GUIContent("Spawn Location"));
                 EditorGUILayout.PropertyField(target_Prop, new GUIContent("Target Object"));

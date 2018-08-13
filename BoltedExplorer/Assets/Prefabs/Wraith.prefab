@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 50590599439301176}
   - component: {fileID: 61540200801155534}
   - component: {fileID: 95302814036208480}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Wraith
-  m_TagString: Untagged
+  m_TagString: wraith
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023745298, y: 0.0901978}
+  m_Offset: {x: -0.08, y: 0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -168,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32656264, y: 1.0996044}
+  m_Size: {x: 0.42, y: 1.16}
   m_EdgeRadius: 0
 --- !u!61 &61652092423338968
 BoxCollider2D:
@@ -232,7 +232,6 @@ MonoBehaviour:
   maxSpeed: 10
   jumpForce: 300
   activeItem: {fileID: 1329667734208714}
-  target: {fileID: 1973765540351190, guid: dd179174953e66949a89173d2f7bb62a, type: 2}
 --- !u!212 &212374528578756694
 SpriteRenderer:
   m_ObjectHideFlags: 1
