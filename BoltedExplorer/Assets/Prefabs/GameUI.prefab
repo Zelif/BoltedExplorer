@@ -1453,7 +1453,10 @@ MonoBehaviour:
   - {fileID: 1573746311741162}
   - {fileID: 1071146484762054}
   ReloadingImage: {fileID: 114143671945625464}
-  ammocount: 0
+  AmmoCounter: {fileID: 114625859240171786}
+  AmmoEmptyColour: {r: 1, g: 0, b: 0, a: 1}
+  AmmoFullColour: {r: 0.67058825, g: 0.3647059, b: 0.3647059, a: 1}
+  barrelAmmo: 0
 --- !u!114 &114525590032159636
 MonoBehaviour:
   m_ObjectHideFlags: 1

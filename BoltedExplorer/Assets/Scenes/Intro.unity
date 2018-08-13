@@ -83371,45 +83371,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 337079675}
-    - target: {fileID: 4571750824549720, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -20.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 224375956929477094, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -20.602
-      objectReference: {fileID: 0}
-    - target: {fileID: 224915790866468954, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -20.601997
-      objectReference: {fileID: 0}
-    - target: {fileID: 223993856730137768, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: m_PlaneDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114666617428368648, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: m_AspectRatio
-      value: 1.7777778
-      objectReference: {fileID: 0}
-    - target: {fileID: 114811714921845216, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: PlayerObject
-      value: 
-      objectReference: {fileID: 499945091}
-    - target: {fileID: 114523781007105636, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: PlayerObject
-      value: 
-      objectReference: {fileID: 499945091}
-    - target: {fileID: 50245285691788618, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
   m_IsPrefabAsset: 0
