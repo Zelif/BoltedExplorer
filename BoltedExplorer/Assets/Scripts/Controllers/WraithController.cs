@@ -15,6 +15,25 @@ public class WraithController : MonoBehaviour {
     [HideInInspector]
     public float health = 100f;
 
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+            if(health <= 0 && DeathEvent != null)
+            {
+                DeathEvent(transform.position);
+            }
+        }
+    }
+
+    public static event DeathDelegate DeathEvent;
+    public delegate void DeathDelegate(Vector3 pos);
+
     public float xOffset = 2.5f;
     public float moveForce = 365f;
     public float maxSpeed = 10f;

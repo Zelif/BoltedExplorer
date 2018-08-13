@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         set
         {
-            ammo = value;
+            ammo = Mathf.Min(value, 99);
             if(AmmoEvent != null)
             {
                 AmmoEvent(ammo);
@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour
         Health = 100;
         LoadedAmmo = 8;
         FlashLight = false;
+        Ammo = ammo;
     }
 
     #endregion
