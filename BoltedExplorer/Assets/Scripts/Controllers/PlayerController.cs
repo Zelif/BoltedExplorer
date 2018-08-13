@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
     {
         Health = 100;
         LoadedAmmo = 8;
+        FlashLight = false;
     }
 
     #endregion
