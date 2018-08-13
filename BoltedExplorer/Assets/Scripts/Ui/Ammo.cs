@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour {
     public List<GameObject> BulletList;
+    public Image ReloadingImage;
 
     [SerializeField]
     private int ammocount;
@@ -33,10 +35,17 @@ public class Ammo : MonoBehaviour {
         AmmoCount = ammo;
     }
 
+    void HandleReload(bool reloading)
+    {
+        ReloadingImage.enabled = reloading;
+    }
+
     // Use this for initialization
     void Awake () {
         PlayerController.LoadedAmmoEvent 
             += new PlayerController.LoadedAmmoDelegate(HandleAmmoChange);
+        PlayerController.ReloadEvent
+            += new PlayerController.ReloadDelegate(HandleReload);
     }
 	
 	// Update is called once per frame
@@ -47,5 +56,6 @@ public class Ammo : MonoBehaviour {
     private void OnDestroy()
     {
         PlayerController.LoadedAmmoEvent -= HandleAmmoChange;
+        PlayerController.ReloadEvent -= HandleReload;
     }
 }
