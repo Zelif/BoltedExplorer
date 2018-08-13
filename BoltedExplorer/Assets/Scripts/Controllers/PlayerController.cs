@@ -11,10 +11,97 @@ public class PlayerController : MonoBehaviour
     public bool facingRight = true;
     [HideInInspector]
     public bool jump = false;
-    [HideInInspector]
-    public float health = 100f;
-    [HideInInspector]
-    public float anxiety = 100f;
+    [SerializeField]
+    private float health = 100f;
+    [SerializeField]
+    private float anxiety = 100f;
+    [SerializeField]
+    private int ammo = 14;
+    [SerializeField]
+    private int loadedAmmo = 8;
+
+
+    public event HealthDelegate HealthEvent;
+    public event AnxietyDelegate AnxietyEvent;
+    public event AmmoDelegate AmmoEvent;
+    public event LoadedAmmoDelegate LoadedAmmoEvent;
+
+    public delegate void HealthDelegate(float h);
+    public delegate void AnxietyDelegate(float a);
+    public delegate void AmmoDelegate(int a);
+    public delegate void LoadedAmmoDelegate(int lda);
+
+    public float Anxiety
+    {
+        get
+        {
+            return anxiety;
+        }
+        set
+        {
+            anxiety = value;
+            if(AnxietyEvent != null)
+            {
+                AnxietyEvent(anxiety);
+            }
+        }
+    }
+
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+            if(HealthEvent != null)
+            {
+                HealthEvent(health);
+            }
+        }
+    }
+
+    public int Ammo
+    {
+        get
+        {
+            return ammo;
+        }
+        set
+        {
+            ammo = value;
+            if(AmmoEvent != null)
+            {
+                AmmoEvent(ammo);
+            }
+        }
+    }
+
+    public int LoadedAmmo
+    {
+        get
+        {
+            return loadedAmmo;
+        }
+        set
+        {
+            loadedAmmo = value;
+            if(LoadedAmmoEvent != null)
+            {
+                LoadedAmmoEvent(loadedAmmo);
+            }
+        }
+    }
+
+    private void OnValidate()
+    {
+        LoadedAmmo = loadedAmmo;
+        Health = health;
+        Anxiety = anxiety;
+        Ammo = ammo;
+    }
 
 
     public float moveForce = 365f;
@@ -180,6 +267,34 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void Shoot()
+    {
+        // Check Ammo and loaded
+        if(LoadedAmmo == 0)
+        {
+            // Make event to trigger empty sound/maybe visual
+            return;
+        }
+        // 
+        LoadedAmmo--;
+    }
+
+    void Reload()
+    {
+        if(LoadedAmmo == 8)
+        {
+            return;
+        }
+        var ammoToReload = 8 - loadedAmmo;
+        if(Ammo == 0)
+        {
+            // Call event to play empty noise
+            return;
+        }
+        ammoToReload = Mathf.Min(ammoToReload, Ammo);
+        LoadedAmmo = loadedAmmo +  ammoToReload;
     }
 
     #endregion

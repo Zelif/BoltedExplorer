@@ -3,22 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBoard : MonoBehaviour {
-    public float health;
+    [SerializeField]
+    private float health;
     public float height;
 
     public RectTransform HealthLiquid;
     public Rigidbody2D LeftChainToBreak;
     public Rigidbody2D RightChainToBreak;
+    public PlayerController PlayerObject;
 
     private float originHeight;
     private float originalWidth;
     private RectTransform rectTransform;
+
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+        }
+    }
+
+    private void OnValidate()
+    {
+        Health = health;
+    }
+
+    void HandleHealthUpdate(float health)
+    {
+        Health = health;
+    }
+
     // Use this for initialization
     void Start () {
-        health = 100;
+        Health = PlayerObject.Health;
         rectTransform = HealthLiquid;
         originalWidth = rectTransform.sizeDelta.x;
         originHeight = rectTransform.sizeDelta.y;
+        PlayerObject.HealthEvent += new PlayerController.HealthDelegate(HandleHealthUpdate);
     }
 	
 	// Update is called once per frame
