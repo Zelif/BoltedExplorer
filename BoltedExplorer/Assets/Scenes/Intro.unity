@@ -93651,6 +93651,7 @@ Transform:
   - {fileID: 473790411}
   - {fileID: 46615554}
   - {fileID: 1500148772}
+  - {fileID: 1458030400}
   m_Father: {fileID: 293929740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95804,6 +95805,98 @@ Transform:
   m_Father: {fileID: 1833446894}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1458030399
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1317149629}
+    m_Modifications:
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 82.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -31.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330051515074476, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 61330051515074476, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911223701671572, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911223701671572, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: dialogue
+      value: Oof! Trapped! No choice but to clear a way out for myself!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911223701671572, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: dialogueDisplayTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911223701671572, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 499945088}
+    - target: {fileID: 114911223701671572, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 1863191030231106, guid: f360c58b4f904bb4f9f46a0ab6863a76,
+        type: 2}
+    - target: {fileID: 212640215903330910, guid: a7936044aeb3f5740a0c230d1f51406f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075107444791156, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+      propertyPath: m_Name
+      value: Dialogue3 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7936044aeb3f5740a0c230d1f51406f, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1458030400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1458030399}
 --- !u!4 &1500148772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4231209582169644, guid: a7936044aeb3f5740a0c230d1f51406f,
