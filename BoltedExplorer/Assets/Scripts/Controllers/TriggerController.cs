@@ -54,7 +54,6 @@ public class TriggerController : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(destroy);
         if( destroy )
         {
             runTimer += Time.deltaTime;
