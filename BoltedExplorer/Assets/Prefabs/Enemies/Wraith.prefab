@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1871464291756556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.35, y: -1.72, z: 0}
+  m_LocalPosition: {x: -3.9066634, y: -1.6784848, z: 0}
   m_LocalScale: {x: 2.532, y: 2.532, z: 2.532}
   m_Children:
   - {fileID: 4225242282873298}
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08, y: 0.08}
+  m_Offset: {x: -0.08, y: 0.11}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -168,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.42, y: 1.16}
+  m_Size: {x: 0.42, y: 1.05}
   m_EdgeRadius: 0
 --- !u!61 &61652092423338968
 BoxCollider2D:
@@ -229,7 +229,7 @@ MonoBehaviour:
   health: 100
   xOffset: 2.5
   moveForce: 365
-  maxSpeed: 10
+  maxSpeed: 5
   jumpForce: 300
   activeItem: {fileID: 1329667734208714}
 --- !u!212 &212374528578756694
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1b2462793a12bb244ac470ea896fdda5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -293,7 +293,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98de8ad0c3e43b548bdaf13a21aa9a09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
