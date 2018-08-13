@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: 3923196ea4939544cba47b3c26f9d55c
+guid: 36ddad5ea56dceb428bf420e16df35a5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SandstoneBrickSheet_0
-    21300002: SandstoneBrickSheet_1
-    21300004: SandstoneBrickSheet_2
-    21300006: SandstoneBrickSheet_3
-    21300008: SandstoneBrickSheet_4
-    21300010: SandstoneBrickSheet_5
-    21300012: SandstoneBrickSheet_6
-    21300014: SandstoneBrickSheet_7
+    21300000: SandstoneColumn_0
+    21300002: SandstoneColumn_1
+    21300004: SandstoneColumn_2
+    21300006: SandstoneColumn_3
+    21300008: SandstoneColumn_4
+    21300010: SandstoneColumn_5
+    21300012: SandstoneColumn_6
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -92,96 +91,36 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SandstoneBrickSheet_0
+      name: SandstoneColumn_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -6, y: -11}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 0}
-        - {x: 8, y: -4}
-      physicsShape:
-      - - {x: 4, y: -14}
-        - {x: 0, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -8}
-        - {x: 10, y: -11}
+      - - {x: 0, y: 16}
+        - {x: 7, y: 9}
+        - {x: 13, y: 6}
+        - {x: 16, y: 5}
+        - {x: 16, y: 16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c0c8a00ac4e21479cf4e02f40ab16e
+      spriteID: 3ba32f4bbf5df8c4a808c89a7a053d2c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandstoneBrickSheet_1
+      name: SandstoneColumn_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -2, y: 7}
-        - {x: -16, y: 0}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 16}
-      physicsShape:
-      - - {x: 0, y: 0}
-        - {x: -16, y: -8}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4433ecb1c3891784c8966fc69391fde3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandstoneBrickSheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0, y: 16}
-        - {x: -16, y: 8}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: addab5dfbadf61b4cac70216866de899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandstoneBrickSheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -191,62 +130,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96a789b2ac1f1ff4f90c2295a99904ef
+      spriteID: a907003ea1623df4a8f1b72202f5c569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandstoneBrickSheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 932a7efbe36e5dc4ea2fdaa90eec4433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandstoneBrickSheet_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0, y: 16}
-        - {x: -16, y: 16}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: aacfaee85532b784bb7341d48fb3300f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SandstoneBrickSheet_6
+      name: SandstoneColumn_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -254,28 +148,44 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -16, y: 16}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: 0}
-        - {x: -2, y: 9}
-      physicsShape:
-      - - {x: -16, y: 8}
-        - {x: -16, y: -16}
-        - {x: 16, y: -16}
-        - {x: 16, y: -8}
-        - {x: -2, y: 1}
+        - {x: -16, y: 5}
+        - {x: -13, y: 6}
+        - {x: -9, y: 8}
+        - {x: -3, y: 13}
+        - {x: 0, y: 16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1d016233721cfb4f944eb4a77d49d50
+      spriteID: 5b918ff4f1d49a94b81099cee8228f0b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SandstoneBrickSheet_7
+      name: SandstoneColumn_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80bf3491c26af34db6e8fe2a0c4ebce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandstoneColumn_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -283,20 +193,61 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: 0}
-        - {x: -16, y: -16}
+      - - {x: 13, y: -5}
+        - {x: 7, y: -9}
+        - {x: 1, y: -16}
         - {x: 16, y: -16}
-        - {x: 6, y: -11}
-        - {x: -6, y: -5}
-      physicsShape:
-      - - {x: -16, y: -8}
-        - {x: -16, y: -16}
-        - {x: 0, y: -16}
-        - {x: -4, y: -14}
-        - {x: -10, y: -11}
+        - {x: 16, y: -5}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aaace48e90045f4c9229af6ccf1d4e5
+      spriteID: 5f2addad9a4fe354b9a97fbd23fca55f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandstoneColumn_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36c20e78e2ad7a4cacda872d7802334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandstoneColumn_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -5}
+        - {x: -16, y: -16}
+        - {x: -1, y: -16}
+        - {x: -3, y: -13}
+        - {x: -8, y: -8}
+        - {x: -13, y: -5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dfc610b254378241aa4f7b787ef50cd
       vertices: []
       indices: 
       edges: []
@@ -304,7 +255,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b13b2a5ac54ddb0499bdb0de2c093af1
+    spriteID: 61ae0a11309277943979e26611c4de0a
     vertices: []
     indices: 
     edges: []
