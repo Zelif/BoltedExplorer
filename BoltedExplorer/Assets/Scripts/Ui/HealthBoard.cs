@@ -14,6 +14,7 @@ public class HealthBoard : MonoBehaviour {
     private float originHeight;
     private float originalWidth;
     private RectTransform rectTransform;
+    private AudioSource audio;
 
     public float Health
     {
@@ -43,6 +44,7 @@ public class HealthBoard : MonoBehaviour {
         originalWidth = rectTransform.sizeDelta.x;
         originHeight = rectTransform.sizeDelta.y;
         PlayerController.HealthEvent += new PlayerController.HealthDelegate(HandleHealthUpdate);
+        audio = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -50,8 +52,9 @@ public class HealthBoard : MonoBehaviour {
         height = health /100 * originHeight;
         rectTransform.sizeDelta = new Vector2(originalWidth, height);
 
-        if(health < 0)
+        if(health <= 0)
         {
+            audio.Play();
             LeftChainToBreak.simulated = false;
             RightChainToBreak.simulated = false;
         }

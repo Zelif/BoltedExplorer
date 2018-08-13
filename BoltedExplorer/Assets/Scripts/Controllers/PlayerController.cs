@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
     private bool inWater = false;
     private Animator anim;
     private new Rigidbody2D rigidbody;
-    
+    private AudioSource audio;
 
     #endregion
 
@@ -205,6 +205,7 @@ public class PlayerController : MonoBehaviour
         rightArm = GameObject.Find("RightArm");
         anim = GetComponentInParent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
 
         if( spawnPoint != null)
         {
@@ -385,6 +386,8 @@ public class PlayerController : MonoBehaviour
             // Make event to trigger empty sound/maybe visual
             return;
         }
+
+        audio.Play();
         Instantiate(Bullet, rightArm.transform.position,rightArm.transform.rotation);
         LoadedAmmo--;
     }
