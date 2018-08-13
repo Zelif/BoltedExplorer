@@ -21,5 +21,8 @@ public enum TriggerType
     Wraith = 4,
 
     [Description("Trap")]
-    Trap = 5
+    Trap = 5,
+
+    [Description("Destroy")]
+    Destroy = 6
 }

@@ -25,6 +25,8 @@ public class TriggerController : MonoBehaviour {
     public float speed = 3f;
 
     private bool onEnter = false;
+    private bool destroy = false;
+    private float runTimer = 0f;
 
     #endregion
 
@@ -49,6 +51,20 @@ public class TriggerController : MonoBehaviour {
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Update Function
+
+    void Update()
+    {
+        Debug.Log(destroy);
+        if( destroy )
+        {
+            runTimer += Time.deltaTime;
+
+            if( runTimer > startDelayTime )
+            {
+                Destroy(target);
+            }
+        }
+    }
 
     #endregion
 
@@ -86,6 +102,9 @@ public class TriggerController : MonoBehaviour {
                         break;
                     case TriggerType.Trap:
                         InitialiseTrap();
+                        break;
+                    case TriggerType.Destroy:
+                        destroy = true;
                         break;
                 };
             }

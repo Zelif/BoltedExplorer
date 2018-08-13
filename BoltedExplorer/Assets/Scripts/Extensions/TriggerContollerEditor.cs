@@ -67,6 +67,10 @@ public class TriggerContollerEditor : Editor
                 EditorGUILayout.PropertyField(speed_Prop, new GUIContent("Speed"));
                 EditorGUILayout.PropertyField(target_Prop, new GUIContent("Target Object"));
                 break;
+            case TriggerType.Destroy:
+                EditorGUILayout.PropertyField(target_Prop, new GUIContent("Target Object"));
+                EditorGUILayout.PropertyField(startDelayTime_Prop, new GUIContent("Destroy Delay"));
+                break;
         };
 
 
