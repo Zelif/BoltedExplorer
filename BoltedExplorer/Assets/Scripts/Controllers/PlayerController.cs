@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -25,11 +27,14 @@ public class PlayerController : MonoBehaviour
     private float flashLightTime = 360;
     public float FlashlightDrainSpeed = 0.5f;
     public float armOffset = 0f;
+    private float ReloadTimer = 2;
+    private bool reloading = false;
 
     public static event HealthDelegate HealthEvent;
     public static event AnxietyDelegate AnxietyEvent;
     public static event AmmoDelegate AmmoEvent;
     public static event LoadedAmmoDelegate LoadedAmmoEvent;
+    public static event ReloadDelegate ReloadEvent;
     public static event FlashLightDelegate FlashLightEvent;
     public static event FlashLightTimeDelegate FlashLightTimeEvent;
 
@@ -39,6 +44,23 @@ public class PlayerController : MonoBehaviour
     public delegate void LoadedAmmoDelegate(int lda);
     public delegate void FlashLightDelegate(bool flashLight);
     public delegate void FlashLightTimeDelegate(float flashLight);
+    public delegate void ReloadDelegate(bool reload);
+
+    public bool Reloading
+    {
+        get
+        {
+            return reloading;
+        }
+        set
+        {
+            reloading = value;
+            if(ReloadEvent != null)
+            {
+                ReloadEvent(reloading);
+            }
+        }
+    }
 
     public float Anxiety
     {
@@ -167,6 +189,7 @@ public class PlayerController : MonoBehaviour
     private bool inWater = false;
     private Animator anim;
     private new Rigidbody2D rigidbody;
+    
 
     #endregion
 
@@ -220,6 +243,16 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Reload();
+        }
+
         if (Input.GetButtonDown("FlashLight"))
         {
             ToggleFlashLight();
@@ -227,10 +260,10 @@ public class PlayerController : MonoBehaviour
 
         if(FlashLightTime <= 0)
         {
-            flashLightEnabled = false;
+            FlashLight = false;
         }
 
-        if(flashLightEnabled)
+        if(FlashLight)
             FlashLightTime -= FlashlightDrainSpeed * Time.deltaTime;
 
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rightArm.transform.position;
@@ -345,7 +378,7 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         // Check Ammo and loaded
-        if(LoadedAmmo == 0)
+        if(LoadedAmmo == 0 || Reloading)
         {
             // Make event to trigger empty sound/maybe visual
             return;
@@ -356,18 +389,29 @@ public class PlayerController : MonoBehaviour
 
     void Reload()
     {
-        if(LoadedAmmo == 8)
+        if(LoadedAmmo == 8 || Reloading)
         {
             return;
         }
         var ammoToReload = 8 - loadedAmmo;
-        if(Ammo == 0)
+        if(Ammo <= 0)
         {
             // Call event to play empty noise
             return;
         }
-        ammoToReload = Mathf.Min(ammoToReload, Ammo);
-        LoadedAmmo = loadedAmmo +  ammoToReload;
+        Reloading = true;
+
+        StartCoroutine(WaitFor(ReloadTimer, () => {
+            ammoToReload = Mathf.Min(ammoToReload, Ammo);
+            Ammo -= ammoToReload;
+            LoadedAmmo = loadedAmmo + ammoToReload;
+            Reloading = false;
+        }));
+    }
+
+    IEnumerator WaitFor(float time, Action action) {
+        yield return new WaitForSeconds(time);
+        action();
     }
 
     void ToggleFlashLight()
