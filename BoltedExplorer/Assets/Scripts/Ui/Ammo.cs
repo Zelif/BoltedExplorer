@@ -12,6 +12,7 @@ public class Ammo : MonoBehaviour {
     public Color AmmoFullColour;
 
     private int ammoCount;
+    private AudioSource audio;
 
     [SerializeField]
     private int barrelAmmo;
@@ -57,6 +58,11 @@ public class Ammo : MonoBehaviour {
 
     void HandleReload(bool reloading)
     {
+        if(reloading)
+        {
+            audio.Play();
+        }
+
         ReloadingImage.enabled = reloading;
     }
 
@@ -68,6 +74,7 @@ public class Ammo : MonoBehaviour {
             += new PlayerController.ReloadDelegate(HandleReload);
         PlayerController.AmmoEvent
             += new PlayerController.AmmoDelegate(HandleTotalAmmo);
+        audio = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame

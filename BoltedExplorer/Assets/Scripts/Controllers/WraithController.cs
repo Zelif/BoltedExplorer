@@ -26,6 +26,7 @@ public class WraithController : MonoBehaviour {
             health = value;
             if(health <= 0 && DeathEvent != null)
             {
+                audio.Play();
                 DeathEvent(transform.position);
                 Destroy(gameObject);
             }
@@ -51,6 +52,7 @@ public class WraithController : MonoBehaviour {
 
     private Animator anim;
     private GameObject target;
+    private AudioSource audio;
     private bool execute = false;
 
     #endregion
@@ -62,6 +64,7 @@ public class WraithController : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     #endregion
