@@ -179,14 +179,14 @@ public class PlayerController : MonoBehaviour
         spawnPoint = GameObject.FindGameObjectWithTag("spawn");
         groundCheck = transform.Find("groundCheck");
         rightArm = GameObject.Find("RightArm");
-        anim = GetComponent<Animator>();
+        anim = GetComponentInParent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
 
         if( spawnPoint != null)
         {
-            var pos = spawnPoint.transform.position == null ? new Vector3(0, 0, 0) : spawnPoint.transform.position;
+            var pos = spawnPoint.transform.position;
             var col = spawnPoint.GetComponent<BoxCollider2D>().offset;
-            gameObject.transform.position = new Vector2(pos.x + col.x, pos.y + col.y);
+            gameObject.transform.position = new Vector3(pos.x + col.x, pos.y + col.y, 0f);
         }
 
         originalJumpForce = jumpForce;

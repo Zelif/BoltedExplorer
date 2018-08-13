@@ -67,6 +67,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4242977610612478}
   - component: {fileID: 108101412377747238}
+  - component: {fileID: 114596763541878036}
+  - component: {fileID: 114455764834989484}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -101,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172534835306194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4982718514227130}
@@ -113,7 +115,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159989316702830}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.18, y: 0.195, z: 0}
   m_LocalScale: {x: 1.091339, y: 1.091339, z: 1.091339}
   m_Children: []
@@ -139,7 +141,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194676799764460}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0.6590654, w: 0.7520856}
   m_LocalPosition: {x: 0.189, y: 0.153, z: 0}
   m_LocalScale: {x: 1.091339, y: 1.091339, z: 1.091339}
   m_Children:
@@ -155,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 1973765540351190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.2959, y: 0.8021, z: 0}
-  m_LocalScale: {x: 0.9163056, y: 0.9163056, z: 0.9163056}
+  m_LocalScale: {x: -0.9163056, y: 0.9163056, z: 0.9163056}
   m_Children:
   - {fileID: 4096605957136796}
   - {fileID: 4509052728126956}
@@ -232,7 +234,7 @@ Light:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807726280052206}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -274,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68ede25aa90d30469078df6ed13c645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
+  facingRight: 0
   jump: 0
   health: 100
   anxiety: 100
@@ -288,6 +290,28 @@ MonoBehaviour:
   maxSpeed: 14
   jumpForce: 1500
   activeItem: {fileID: 0}
+--- !u!114 &114455764834989484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807726280052206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314204669a3d295408a3e0793b08b5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114596763541878036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807726280052206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314204669a3d295408a3e0793b08b5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212380684162386138
 SpriteRenderer:
   m_ObjectHideFlags: 1
