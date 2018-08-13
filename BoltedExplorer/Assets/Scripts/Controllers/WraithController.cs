@@ -14,7 +14,7 @@ public class WraithController : MonoBehaviour {
     public bool jump = false;
     [HideInInspector]
     public float health = 100f;
-
+    public GameObject DeathPrefab;
     public float Health
     {
         get
@@ -27,7 +27,9 @@ public class WraithController : MonoBehaviour {
             if(health <= 0 && DeathEvent != null)
             {
                 DeathEvent(transform.position);
+                var dedWraith = Instantiate(DeathPrefab, transform.position, transform.rotation);
                 Destroy(gameObject);
+                Destroy(dedWraith, 1.5f);
             }
         }
     }
