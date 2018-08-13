@@ -26,7 +26,6 @@ public class WraithController : MonoBehaviour {
             health = value;
             if(health <= 0 && DeathEvent != null)
             {
-                audio.Play();
                 DeathEvent(transform.position);
                 var dedWraith = Instantiate(DeathPrefab, transform.position, transform.rotation);
                 Destroy(gameObject);
