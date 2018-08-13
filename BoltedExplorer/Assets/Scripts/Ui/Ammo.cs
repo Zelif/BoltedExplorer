@@ -22,6 +22,11 @@ public class Ammo : MonoBehaviour {
         }
     }
 
+    private void OnValidate()
+    {
+        AmmoCount = ammocount;
+    }
+
 
     // Use this for initialization
     void Start () {
