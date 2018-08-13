@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float flashLightTime = 360;
     public float FlashlightDrainSpeed = 0.5f;
-    
+    public float armOffset = 0f;
 
     public static event HealthDelegate HealthEvent;
     public static event AnxietyDelegate AnxietyEvent;
@@ -161,10 +161,11 @@ public class PlayerController : MonoBehaviour
 
     private Transform groundCheck;
     private GameObject spawnPoint;
+    private GameObject rightArm;
     private float originalJumpForce;
     private bool grounded = false;
     private bool inWater = false;
-    // private Animator anim;
+    private Animator anim;
     private new Rigidbody2D rigidbody;
 
     #endregion
@@ -177,7 +178,8 @@ public class PlayerController : MonoBehaviour
     {
         spawnPoint = GameObject.FindGameObjectWithTag("spawn");
         groundCheck = transform.Find("groundCheck");
-        //      anim = GetComponent<Animator>();
+        rightArm = GameObject.Find("RightArm");
+        anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
 
         if( spawnPoint != null)
@@ -229,6 +231,11 @@ public class PlayerController : MonoBehaviour
 
         if(flashLightEnabled)
             FlashLightTime -= FlashlightDrainSpeed * Time.deltaTime;
+
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rightArm.transform.position;
+        difference.Normalize();
+        float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        rightArm.transform.rotation = Quaternion.Euler(0f, 0f, rotation_z + armOffset);
     }
 
     #endregion
@@ -241,7 +248,14 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-        //   anim.SetFloat("Speed", Mathf.Abs(h));
+        if( Input.GetAxis("Horizontal") != 0 )
+        {
+            anim.Play("Walking");
+        }
+        else
+        {
+            anim.Play("Idle");
+        }
 
         rigidbody.velocity = new Vector2(h * maxSpeed, rigidbody.velocity.y);
 
