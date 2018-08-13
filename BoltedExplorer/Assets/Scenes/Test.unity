@@ -229,15 +229,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114042165411598098, guid: dd179174953e66949a89173d2f7bb62a,
+        type: 2}
+      propertyPath: FlashlightDrainSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd179174953e66949a89173d2f7bb62a, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1019631513 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114042165411598098, guid: dd179174953e66949a89173d2f7bb62a,
-    type: 2}
-  m_PrefabInternal: {fileID: 352827771}
-  m_Script: {fileID: 11500000, guid: b68ede25aa90d30469078df6ed13c645, type: 3}
 --- !u!1001 &1962273718
 Prefab:
   m_ObjectHideFlags: 0
@@ -340,21 +339,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 337079675}
-    - target: {fileID: 114523781007105636, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: PlayerObject
-      value: 
-      objectReference: {fileID: 1019631513}
-    - target: {fileID: 114811714921845216, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: PlayerObject
-      value: 
-      objectReference: {fileID: 1019631513}
-    - target: {fileID: 114895009387041080, guid: de219dde6c13b934f9e875eae182ee2a,
-        type: 2}
-      propertyPath: PlayerObject
-      value: 
-      objectReference: {fileID: 1019631513}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de219dde6c13b934f9e875eae182ee2a, type: 2}
   m_IsPrefabAsset: 0

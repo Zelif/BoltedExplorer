@@ -20,11 +20,13 @@ public class TriggerController : MonoBehaviour {
     public string dialogue = "";
     public float dialogueDisplayTime = 5f;
 
-    public float startDelayTime = 1f;
-    public float endDelayTime = 1f;
+    public float startDelayTime = 3f;
+    public float endDelayTime = 3f;
     public float speed = 3f;
 
     private bool onEnter = false;
+    private bool destroy = false;
+    private float runTimer = 0f;
 
     #endregion
 
@@ -49,6 +51,34 @@ public class TriggerController : MonoBehaviour {
     /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
     #region Update Function
+
+    void Update()
+    {
+        if( onEnter )
+        {
+
+            if( destroy )
+            {
+                runTimer += Time.deltaTime;
+
+                if( runTimer > startDelayTime )
+                {
+                    Destroy(target);
+                }
+            }
+
+            if( !limited && type == TriggerType.Wraith )
+            {
+                runTimer += Time.deltaTime;
+
+                if( runTimer > startDelayTime )
+                {
+                    InitialiseWraith();
+                    runTimer = 0f;
+                }
+            }
+        }
+    }
 
     #endregion
 
@@ -82,10 +112,13 @@ public class TriggerController : MonoBehaviour {
                         InitialiseDialogue();
                         break;
                     case TriggerType.Wraith:
-                        InitialiseObject();
+                        InitialiseWraith();
                         break;
                     case TriggerType.Trap:
                         InitialiseTrap();
+                        break;
+                    case TriggerType.Destroy:
+                        destroy = true;
                         break;
                 };
             }
@@ -94,10 +127,10 @@ public class TriggerController : MonoBehaviour {
 
     void OnTriggerExit2D( Collider2D col )
     {
-        if( col.gameObject.CompareTag("Player") )
-        {
-            onEnter = false;
-        }
+        //if( col.gameObject.CompareTag("Player") )
+        //{
+        //    onEnter = false;
+        //}
     }
 
     #endregion
@@ -115,13 +148,17 @@ public class TriggerController : MonoBehaviour {
         Destroy(this);
     }
 
-    void InitialiseObject()
+    void InitialiseWraith()
     {
         var wraithPrefab = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
         var component = wraithPrefab.GetComponent<WraithController>();
         component.Initialise( target );
         component.Run();
-        Destroy(this);
+
+        if( limited )
+        {
+            Destroy(this);
+        }
     }
 
     void InitialiseTrap()
